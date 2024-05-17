@@ -49,7 +49,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/post_img_edit"
                 android:background="@drawable/rounded"
                 android:layout_width="300px"
                 android:layout_height="300px"
@@ -63,14 +63,15 @@
                 android:layout_width="300px"
                 android:background="@color/black_transparent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                app:layout_constraintStart_toStartOf="@+id/imageView3">
+                app:layout_constraintBottom_toBottomOf="@+id/post_img_edit"
+                app:layout_constraintEnd_toEndOf="@+id/post_img_edit"
+                app:layout_constraintStart_toStartOf="@+id/post_img_edit">
 
                 <TextView
+                    android:id="@+id/text_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="add image"
+                    android:text="add"
                     android:textColor="@color/white"
                     android:textAlignment="center"/>
             </RelativeLayout>
@@ -92,7 +93,7 @@
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/player_desc_edit"
+                android:id="@+id/post_desc_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded"
@@ -108,6 +109,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_savedPost"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Posting"
