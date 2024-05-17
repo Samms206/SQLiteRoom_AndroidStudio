@@ -27,8 +27,6 @@ class AddPostActivity : AppCompatActivity() {
 
     // Mendeklarasikan variabel untuk menyimpan URI gambar yang dipilih
     private var currentImageUri: Uri? = null
-    // Mendeklarasikan ImageView untuk menampilkan gambar yang dipilih
-    private lateinit var playerImage: ImageView
     // Mendeklarasikan ViewModel untuk interaksi dengan database
     private lateinit var postViewModel: PostViewModel
     //
@@ -44,16 +42,16 @@ class AddPostActivity : AppCompatActivity() {
         val firstImage = it.firstOrNull() ?: return@registerImagePicker
         if (firstImage.uri.toString().isNotEmpty()) {
             // Menampilkan ImageView jika gambar berhasil dipilih
-            playerImage.visibility = View.VISIBLE
+            vPostImage.visibility = View.VISIBLE
             // Menyimpan URI gambar yang dipilih
             currentImageUri = firstImage.uri
             // Menampilkan pesan bahwa gambar berhasil dimasukkan
             vText_img.setText("change")
 
             // Menggunakan library Glide untuk menampilkan gambar yang dipilih
-            Glide.with(playerImage)
+            Glide.with(vPostImage)
                 .load(firstImage.uri)
-                .into(playerImage)
+                .into(vPostImage)
         } else {
             // Menyembunyikan ImageView jika tidak ada gambar yang dipilih
             View.GONE

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modul4.R
 import com.example.modul4.room.PostDatabase
@@ -12,7 +13,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 
 class PostAdapterRoom(private var postList: List<PostDatabase>) :
-    RecyclerView.Adapter<PostAdapterRoom.PlayerViewHolder>() {
+    RecyclerView.Adapter<PostAdapterRoom.PostViewHolder>() {
 
     // Deklarasi variabel untuk callback ketika item diklik
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -28,25 +29,25 @@ class PostAdapterRoom(private var postList: List<PostDatabase>) :
     }
 
     // Kelas ViewHolder untuk menyimpan referensi view yang digunakan dalam RecyclerView
-    class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val hotelTitle: MaterialTextView = itemView.findViewById(R.id.post_title)
-        val hotelDesc: MaterialTextView = itemView.findViewById(R.id.post_desc)
+    class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val hotelTitle: TextView = itemView.findViewById(R.id.post_title)
+        val hotelDesc: TextView = itemView.findViewById(R.id.post_desc)
         val hotelImg: ShapeableImageView = itemView.findViewById(R.id.post_img)
-        val hotelLike: MaterialTextView = itemView.findViewById(R.id.post_like)
+        val hotelLike: TextView = itemView.findViewById(R.id.post_like)
     }
 
     // Fungsi untuk membuat ViewHolder (Melakukan setting untuk XML yang akan kita gunakan untuk menampilkan data)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): PlayerViewHolder {
+    ): PostViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
-        return PlayerViewHolder(view)
+        return PostViewHolder(view)
     }
 
     // Fungsi untuk mengikat data dengan ViewHolder (memasukkan data yang kita miliki ke dalam XML ViewHolder)
-    override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val data = postList[position]
 
         holder.hotelTitle.text = data.name
