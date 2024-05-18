@@ -20,8 +20,8 @@ import com.example.modul4.room.PostViewModel
 import com.example.modul4.room.PostViewModelFactory
 import com.example.modul4.utils.reduceFileImage
 import com.example.modul4.utils.uriToFile
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import kotlin.random.Random
 
 class AddPostActivity : AppCompatActivity() {
 
@@ -137,7 +137,7 @@ class AddPostActivity : AppCompatActivity() {
                 name = firstTwoWords,
                 description = descriptionText,
                 image = imageFile,
-                like = 0
+                like = Random.nextInt(1, 51)
             )
         }
 

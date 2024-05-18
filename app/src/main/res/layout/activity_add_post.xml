@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/post_img_edit"
                 android:background="@drawable/rounded"
                 android:layout_width="300px"
@@ -57,11 +57,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/circular10p"/>
 
             <RelativeLayout
                 android:layout_width="300px"
-                android:background="@color/black_transparent"
+                android:backgroundTint="@color/black_transparent"
+                android:background="@drawable/toprounded"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/post_img_edit"
                 app:layout_constraintEnd_toEndOf="@+id/post_img_edit"

@@ -1,10 +1,10 @@
 package com.example.modul4.adapter
 
-
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modul4.R
@@ -34,6 +34,9 @@ class PostAdapterRoom(private var postList: List<PostDatabase>) :
         val hotelDesc: TextView = itemView.findViewById(R.id.post_desc)
         val hotelImg: ShapeableImageView = itemView.findViewById(R.id.post_img)
         val hotelLike: TextView = itemView.findViewById(R.id.post_like)
+
+        //btnlike
+        val btnLike: LinearLayout = itemView.findViewById(R.id.btn_like)
     }
 
     // Fungsi untuk membuat ViewHolder (Melakukan setting untuk XML yang akan kita gunakan untuk menampilkan data)
@@ -59,7 +62,16 @@ class PostAdapterRoom(private var postList: List<PostDatabase>) :
         holder.hotelImg.setImageURI(uri)
 
         // Mengatur aksi ketika item diklik
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(postList[holder.absoluteAdapterPosition]) }
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(postList[holder.absoluteAdapterPosition])
+        }
+
+        // button Like
+        holder.btnLike.setOnClickListener {
+            // Tambah 1 pada likeCount dan update UI
+            data.like += 1
+            holder.hotelLike.text = data.like.toString()
+        }
     }
 
     // Fungsi untuk mendapatkan jumlah item

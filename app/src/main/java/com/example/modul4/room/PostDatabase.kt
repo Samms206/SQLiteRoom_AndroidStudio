@@ -37,7 +37,7 @@ data class PostDatabase(
     val image: File,
 
     @ColumnInfo(name = "post_like")
-    val like: Int = 0,
+    var like: Int = 0,
 ) : Parcelable {
     // Konstruktor sekunder untuk membuat objek PlayerDatabase dari Parcel
     constructor(parcel: Parcel) : this(

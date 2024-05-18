@@ -74,12 +74,14 @@
                 android:layout_marginTop="4dp"
                 android:text="10 minutes ago"
                 android:textSize="14dp"/>
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/post_img"
                 android:layout_width="match_parent"
                 android:layout_height="630px"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/imgpost"/>
+                android:src="@drawable/imgpost"
+                app:shapeAppearanceOverlay="@style/circular10p"/>
 
         </LinearLayout>
 
@@ -92,6 +94,7 @@
             android:gravity="">
             <!--wrapper-->
             <LinearLayout
+                android:id="@+id/btn_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
