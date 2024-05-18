@@ -14,16 +14,6 @@ import com.google.android.material.imageview.ShapeableImageView
 class PostAdapterRoom(private var postList: List<PostDatabase>) :
     RecyclerView.Adapter<PostAdapterRoom.PostViewHolder>() {
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: PostDatabase)
-    }
-
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val hotelTitle: TextView = itemView.findViewById(R.id.post_title)
         val hotelDesc: TextView = itemView.findViewById(R.id.post_desc)
@@ -52,10 +42,6 @@ class PostAdapterRoom(private var postList: List<PostDatabase>) :
 
         val uri = Uri.fromFile(data.image)
         holder.hotelImg.setImageURI(uri)
-
-        holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(postList[holder.absoluteAdapterPosition])
-        }
 
         holder.btnLike.setOnClickListener {
             data.like += 1

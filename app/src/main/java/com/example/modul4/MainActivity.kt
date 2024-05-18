@@ -32,27 +32,12 @@ class MainActivity : AppCompatActivity() {
             if (postData != null) {
                 postAdapterRoom = PostAdapterRoom(postData)
                 recyclerView.adapter = postAdapterRoom
-
-                // Menangani aksi klik pada item di RecyclerView
-                postAdapterRoom.setOnItemClickCallback(object :
-                    PostAdapterRoom.OnItemClickCallback {
-                    override fun onItemClicked(data: PostDatabase) {
-                        showSelectedPost(data)
-                    }
-                })
             }
         }
     }
 
-    private fun showSelectedPost(data: PostDatabase) {
-        val navigateToDetail = Intent(this, DetailActivity::class.java)
-        navigateToDetail.putExtra("player", data)
-        startActivity(navigateToDetail)
-    }
-
     override fun onRestart() {
         super.onRestart()
-
         postViewModel.getAllPost()
     }
 
