@@ -21,6 +21,8 @@ import com.example.modul4.room.PostViewModelFactory
 import com.example.modul4.utils.reduceFileImage
 import com.example.modul4.utils.uriToFile
 import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
+import java.util.Date
 import kotlin.random.Random
 
 class AddPostActivity : AppCompatActivity() {

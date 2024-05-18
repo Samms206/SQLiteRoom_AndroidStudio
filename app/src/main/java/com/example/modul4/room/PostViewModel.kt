@@ -12,4 +12,8 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
     fun getAllPost(): LiveData<List<PostDatabase>> {
         return postRepository.getAllPost()
     }
+
+    fun deletePost(post: PostDatabase) {
+        postRepository.deletePost(post)
+    }
 }

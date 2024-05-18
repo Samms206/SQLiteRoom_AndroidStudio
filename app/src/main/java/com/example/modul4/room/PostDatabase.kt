@@ -24,6 +24,8 @@ data class PostDatabase(
 
     @ColumnInfo(name = "post_like")
     var like: Int = 0,
+
+
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

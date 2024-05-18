@@ -3,7 +3,7 @@ package com.example.modul4.room
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.vinz.latihanrecyclerviewpraktikum.utils.DependencyInjection
+import com.example.modul4.utils.DependencyInjection
 
 
 class PostViewModelFactory private constructor(private val postRepository: PostRepository) :

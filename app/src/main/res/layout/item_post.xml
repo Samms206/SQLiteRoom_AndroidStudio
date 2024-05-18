@@ -40,6 +40,7 @@
 
             </LinearLayout>
             <ImageView
+                android:id="@+id/btn_more"
                 android:layout_width="80px"
                 android:layout_height="80px"
                 android:src="@drawable/moreicon"
