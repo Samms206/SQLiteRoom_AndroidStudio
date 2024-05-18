@@ -7,20 +7,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.File
 
-/**
- * Kelas PlayerDatabase adalah kelas data yang berfungsi sebagai entitas dalam database Room.
- * Kelas ini memiliki beberapa properti yang mewakili kolom dalam tabel database.
- *
- * Anotasi @Entity digunakan untuk memberi tahu Room bahwa kelas ini adalah tabel dalam database.
- *
- * Anotasi @PrimaryKey digunakan untuk menentukan bahwa properti id adalah kunci utama dalam tabel.
- * autoGenerate = true berarti Room akan menghasilkan nilai id secara otomatis setiap kali kita memasukkan entitas baru ke dalam tabel.
- *
- * Anotasi @ColumnInfo digunakan untuk menentukan nama kolom dalam tabel.
- *
- * Kelas ini juga mengimplementasikan Parcelable, yang memungkinkan kita untuk mempassing objek PlayerDatabase antar komponen Android.
- */
-
 @Entity
 data class PostDatabase(
     @PrimaryKey(autoGenerate = true)
@@ -39,7 +25,6 @@ data class PostDatabase(
     @ColumnInfo(name = "post_like")
     var like: Int = 0,
 ) : Parcelable {
-    // Konstruktor sekunder untuk membuat objek PlayerDatabase dari Parcel
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
@@ -48,7 +33,6 @@ data class PostDatabase(
         parcel.readInt(),
     )
 
-    // Fungsi untuk menulis data objek PlayerDatabase ke Parcel
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(name)
@@ -57,19 +41,14 @@ data class PostDatabase(
         parcel.writeInt(like)
     }
 
-    // Fungsi untuk mendeskripsikan jenis konten khusus yang ditangani oleh Parcelable
     override fun describeContents(): Int {
         return 0
     }
-
-    // Objek pendamping untuk PlayerDatabase yang berisi fungsi untuk membuat objek PlayerDatabase dari Parcel dan Array
     companion object CREATOR : Parcelable.Creator<PostDatabase> {
-        // Fungsi untuk membuat objek PlayerDatabase dari Parcel
         override fun createFromParcel(parcel: Parcel): PostDatabase {
             return PostDatabase(parcel)
         }
 
-        // Fungsi untuk membuat array dari objek PlayerDatabase
         override fun newArray(size: Int): Array<PostDatabase?> {
             return arrayOfNulls(size)
         }

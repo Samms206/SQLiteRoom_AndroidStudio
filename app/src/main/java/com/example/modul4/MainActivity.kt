@@ -15,35 +15,28 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
-    // Mendeklarasikan ViewModel untuk interaksi dengan database
     private lateinit var postViewModel: PostViewModel
-    // Mendeklarasikan adapter untuk RecyclerView
     private lateinit var postAdapterRoom: PostAdapterRoom
-    // Mendeklarasikan RecyclerView untuk menampilkan daftar pemain
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Mendapatkan instance ViewModel
         val factory = PostViewModelFactory.getInstance(this)
-        postViewModel = ViewModelProvider(this, factory)[PostViewModel::class.java] // ini
-
-        // Menghubungkan variabel dengan komponen di layout
+        postViewModel = ViewModelProvider(this, factory)[PostViewModel::class.java]
         recyclerView = findViewById(R.id.rv_post)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Mengamati perubahan data pemain dan memperbarui RecyclerView
         postViewModel.getAllPost().observe(this) { postData ->
             if (postData != null) {
-                postAdapterRoom = PostAdapterRoom(postData) //ini
+                postAdapterRoom = PostAdapterRoom(postData)
                 recyclerView.adapter = postAdapterRoom
 
                 // Menangani aksi klik pada item di RecyclerView
                 postAdapterRoom.setOnItemClickCallback(object :
                     PostAdapterRoom.OnItemClickCallback {
-                    override fun onItemClicked(data: PostDatabase) { //ini
+                    override fun onItemClicked(data: PostDatabase) {
                         showSelectedPost(data)
                     }
                 })
@@ -51,23 +44,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk menampilkan detail pemain yang dipilih
-    private fun showSelectedPost(data: PostDatabase) { // ini
-        // Membuat intent untuk berpindah ke DetailPlayerActivity
+    private fun showSelectedPost(data: PostDatabase) {
         val navigateToDetail = Intent(this, DetailActivity::class.java)
-
-        // Menambahkan dan membawa data pemain ke intent dengan tujuan ke DetailPlayerActivity
         navigateToDetail.putExtra("player", data)
-
-        // Memulai activity baru
         startActivity(navigateToDetail)
     }
 
-    // Fungsi yang dipanggil ketika activity di-restart
     override fun onRestart() {
         super.onRestart()
 
-        // Memperbarui daftar pemain
         postViewModel.getAllPost()
     }
 
