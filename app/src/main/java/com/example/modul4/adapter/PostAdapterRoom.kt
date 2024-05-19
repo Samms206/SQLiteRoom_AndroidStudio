@@ -61,7 +61,7 @@ class PostAdapterRoom(private var postList: List<PostDatabase>) :
             holder.postLike.text = data.like.toString()
         }
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(postList[holder.absoluteAdapterPosition]) }
+        holder.btnMore.setOnClickListener { onItemClickCallback.onItemClicked(postList[holder.absoluteAdapterPosition]) }
     }
 
     override fun getItemCount(): Int = postList.size
