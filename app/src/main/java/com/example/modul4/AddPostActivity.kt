@@ -27,7 +27,6 @@ import kotlin.random.Random
 
 class AddPostActivity : AppCompatActivity() {
 
-
     private var currentImageUri: Uri? = null
     private lateinit var postViewModel: PostViewModel
     private lateinit var vPostDesc: TextInputEditText

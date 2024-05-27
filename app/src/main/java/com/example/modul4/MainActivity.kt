@@ -3,7 +3,9 @@ package com.example.modul4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,13 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         postViewModel.getAllPost().observe(this) { postData ->
             if (postData != null) {
-                postAdapterRoom = PostAdapterRoom(postData) //ini
+                postAdapterRoom = PostAdapterRoom(postData, postViewModel) //ini
                 recyclerView.adapter = postAdapterRoom
 
                 postAdapterRoom.setOnItemClickCallback(object :
                     PostAdapterRoom.OnItemClickCallback {
-                    override fun onItemClicked(data: PostDatabase) {
-                        showDeleteConfirmationDialog(data)
+                    override fun onMoreClicked(data: PostDatabase, position: Int) {
+                        PopUpFragment(data, position).show(supportFragmentManager, PopUpFragment.TAG)
                     }
                 })
             }
@@ -52,18 +54,5 @@ class MainActivity : AppCompatActivity() {
     fun toAddPost(view: View) {
         val intent = Intent(this, AddPostActivity::class.java)
         startActivity(intent)
-    }
-
-    private fun showDeleteConfirmationDialog(post: PostDatabase) {
-        AlertDialog.Builder(this)
-            .setMessage("Are you sure you want to delete this post?")
-            .setPositiveButton("Delete") { _, _ -> deletePost(post) }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
-
-    private fun deletePost(post: PostDatabase) {
-        postViewModel.deletePost(post)
-        postAdapterRoom.notifyDataSetChanged()
     }
 }

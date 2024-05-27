@@ -16,4 +16,8 @@ class PostViewModel(private val postRepository: PostRepository) : ViewModel() {
     fun deletePost(post: PostDatabase) {
         postRepository.deletePost(post)
     }
+
+    fun updatePost(post: PostDatabase) {
+        postRepository.updatePost(post)
+    }
 }

@@ -15,6 +15,10 @@ class PostRepository private constructor(private val postDao: PostDao, private v
         appExecutors.diskIO().execute { postDao.deletePost(post) }
     }
 
+    fun updatePost(post: PostDatabase) {
+        appExecutors.diskIO().execute { postDao.updatePost(post) }
+    }
+
     companion object {
         @Volatile
         private var instance: PostRepository? = null

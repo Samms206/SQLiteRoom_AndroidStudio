@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/white"
-    tools:context=".activity.example.PopUpFragment">
+    tools:context=".PopUpFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_popup"
@@ -22,7 +22,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/urbanist_semibold"
+                android:fontFamily="@font/urbanist_medium"
                 android:gravity="center"
                 android:text="Ubah atau hapus?"
                 android:textSize="20sp"
@@ -43,10 +43,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/popup_title" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btn_ubah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/bg_btn_ubah"
@@ -59,7 +60,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/popup_subtitle" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btn_hapus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
